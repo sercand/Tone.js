@@ -299,20 +299,6 @@ Tone.Listener.prototype.dispose = function(){
 	return this;
 };
 
-//SINGLETON SETUP
-var ListenerConstructor = Tone.Listener;
-Tone.Listener = new ListenerConstructor();
-
-Tone.Context.on("init", function(context){
-	if (context.listener && context.listener.isListener){
-		//a single listener object
-		Tone.Listener = context.listener;
-	} else {
-		//make new Listener insides
-		Tone.Listener = new ListenerConstructor();
-	}
-});
-//END SINGLETON SETUP
 
 export default Tone.Listener;
 

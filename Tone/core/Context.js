@@ -3,7 +3,7 @@ import "../core/Emitter";
 import "../core/Timeline";
 import "../shim/AudioContext";
 
-var AudioContextProperties = ["baseLatency", "destination", "currentTime", "sampleRate", "listener", "state"];
+var AudioContextProperties = ["baseLatency", "destination", "currentTime", "sampleRate", "state"];
 var AudioContextMethods = ["suspend", "close", "resume", "getOutputTimestamp", "createMediaElementSource", "createMediaStreamSource", "createMediaStreamDestination", "createBuffer", "decodeAudioData", "createBufferSource", "createConstantSource", "createGain", "createDelay", "createBiquadFilter", "createIIRFilter", "createWaveShaper", "createPanner", "createConvolver", "createDynamicsCompressor", "createAnalyser", "createScriptProcessor", "createStereoPanner", "createOscillator", "createPeriodicWave", "createChannelSplitter", "createChannelMerger", "audioWorklet"];
 
 /**
@@ -138,7 +138,9 @@ Tone.Context.prototype._defineProperty = function(context, prop){
 				return context[prop];
 			},
 			"set" : function(val){
+				if(prop!="listener"){
 				context[prop] = val;
+				}
 			}
 		});
 	}
